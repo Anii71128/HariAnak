@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kotak Pesan</title>
+  <style>
+    /* === Gaya Umum Halaman === */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5; /* Latar belakang abu-abu muda */
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Tinggi penuh layar */
+    }
+
+    /* === Kontainer Form === */
+    .form-container {
+      background-color: #fff; /* Putih */
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+      width: 90%;
+      max-width: 400px;
+    }
+
+    /* === Judul Form === */
+    h2 {
+      text-align: center;
+      color: #2e7d32; /* Hijau gelap */
+      margin-bottom: 20px;
+    }
+
+    /* === Label untuk Input === */
+    label {
+      display: block;
+      margin-top: 15px;
+      color: #333;
+    }
+
+    /* === Input dan Textarea === */
+    input[type="text"],
+    input[type="email"],
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+
+    textarea {
+      resize: vertical;
+      height: 100px;
+    }
+
+    /* === Tombol Kirim === */
+    button {
+      background-color: #A3DC9A; /* Warna utama hijau pastel */
+      color: white;
+      border: none;
+      padding: 12px;
+      margin-top: 20px;
+      width: 100%;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #90c98a; /* Warna lebih gelap saat hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>Kirim Pesan</h2>
+    
+    <!-- Formulir pesan -->
+    <form onsubmit="return validateForm()">
+      <!-- Input Nama -->
+      <label for="nama">Nama</label>
+      <input type="text" id="nama" placeholder="Masukkan nama Anda" required>
+
+      <!-- Input Email -->
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Masukkan email Anda" required>
+
+      <!-- Textarea untuk isi pesan -->
+      <label for="pesan">Pesan</label>
+      <textarea id="pesan" placeholder="Tulis pesan Anda..." required></textarea>
+
+      <!-- Tombol Kirim -->
+      <button type="submit">Kirim</button>
+    </form>
+  </div>
+
+  <script>
+    // Fungsi validasi form saat dikirim
+    function validateForm() {
+      const nama = document.getElementById("nama").value; // Ambil nilai dari input nama
+      const angkaAda = /\d/; // Regex untuk mengecek apakah ada angka
+
+      // Jika nama mengandung angka
+      if (angkaAda.test(nama)) {
+        alert("Nama tidak boleh mengandung angka!"); // Tampilkan pesan
+        return false; // Batalkan pengiriman form
+      }
+
+      // Jika validasi lolos, tampilkan pesan sukses
+      alert("Pesan berhasil dikirim!");
+      return true; // Lanjutkan pengiriman
+    }
+  </script>
+</body>
+</html>
